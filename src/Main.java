@@ -73,9 +73,13 @@ public class Main {
             int elementOfArray1 = reader.nextInt();
             numberOfIntegers1[i] = elementOfArray1;
         }
-        // print elements
+        int [] reversedArray = new int[lengthOfArray1];
         for (int i = lengthOfArray1; i > 0; i--) {
-            System.out.println(numberOfIntegers1[i - 1]);
+            reversedArray[lengthOfArray1 - i] = numberOfIntegers1[i - 1];
+        }
+
+        for (int i = 0; i < reversedArray.length; i++) {
+            System.out.println(reversedArray[i]);
         }
 
         // task 4 Napravite program koji provjerava da li je rijec palindrom
@@ -124,27 +128,27 @@ public class Main {
         // Should be populated from console
         System.out.println("Task 6");
         System.out.println("\n");
-        int A[] = {1, 2};
-        int B[] = {3, 4, 5, 6};
-        int C[] = {7, 8, 9};
+        int firstArray[] = {1, 2};
+        int secondArray[] = {3, 4, 5, 6};
+        int thirdArray[] = {7, 8, 9};
 
-        int lengthOfD = A.length + B.length + C.length;
-        int D[] = new int[lengthOfD]; // D = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        int lengthOfTotalArray = firstArray.length + secondArray.length + thirdArray.length;
+        int totalArray[] = new int[lengthOfTotalArray]; // D = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
         // enter and populate elements
-        for (int i = 0; i < A.length; i++) {
-            D[i] = A[i];
+        for (int i = 0; i < firstArray.length; i++) {
+            totalArray[i] = firstArray[i];
         } // D = { 1, 2, 0, 0, 0, 0, 0, 0, 0 }
 
-        for (int i = 0; i < B.length; i++) {
-            D[i + A.length] = B[i];
+        for (int i = 0; i < secondArray.length; i++) {
+            totalArray[i + firstArray.length] = secondArray[i];
         } // D = { 1, 2, 3, 4, 5, 6, 0, 0, 0 }
 
-        for (int i = 0; i < C.length; i++) {
-            D[i + A.length + B.length] = C[i];
+        for (int i = 0; i < thirdArray.length; i++) {
+            totalArray[i + firstArray.length + secondArray.length] = thirdArray[i];
         } // D = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 
-        for (int i = 0; i < D.length; i++) {
-            System.out.println(D[i]);
+        for (int i = 0; i < totalArray.length; i++) {
+            System.out.println(totalArray[i]);
             // D = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
         }
 
@@ -155,32 +159,28 @@ public class Main {
         System.out.println("Task 7");
         System.out.println("\n");
         System.out.println("Zbir nizova: {1,3,5,6} i {1,1,1,1,1,1,1} je niz: ");
-        int arrayA[] = {1,3,5,6}; // length 4
-        int arrayB[] = {1,1,1,1,1,1,1}; // length 7
-        int maxValue = max(arrayA.length, arrayB.length); // length 7
-        int[] sumArray = new int[maxValue]; // {0,0,0,0,0,0,0}
+        int arrayA[] = {1,3,5,6};
+        int arrayB[] = {1,1,1,1,1,1,1};
 
         if (arrayA.length > arrayB.length)
         {
             for (int i = 0; i < arrayB.length; i++) {
-                sumArray[i] = arrayA[i] + arrayB[i];
+                arrayA[i] += arrayB[i];
             }
-            for (int i=arrayB.length; i < arrayA.length; i++) {
-                sumArray[i] = arrayA[i];
+            // print
+            for (int i = 0; i < arrayA.length; i++) {
+                System.out.println(arrayA[i]);
             }
         }
         else
         {
             for (int i = 0; i < arrayA.length; i++) {
-                sumArray[i] = arrayA[i] + arrayB[i]; // {2,4,6,7,0,0,0}
+                arrayB[i] += arrayA[i];
             }
-            for (int i=arrayA.length; i < arrayB.length; i++) {
-                sumArray[i] = arrayB[i]; // {2,4,6,7,1,1,1}
+            // print
+            for (int i = 0; i < arrayB.length; i++) {
+                System.out.println(arrayB[i]);
             }
-        }
-
-        for (int i = 0, j=0; i < sumArray.length; i++) {
-            System.out.println(sumArray[i]); // {2,4,6,7,1,1,1}
         }
 
         // Task 8
@@ -193,22 +193,29 @@ public class Main {
         String[] arrayOfString = {"Car", "Monkey", "Doll", "Dry", "Fly", "Fry", "tEst"};
         String[] arrayOfStringWithoutVowels = new String[arrayOfString.length];
 
+        int lenghtOfFinalArray = 0;
         for (int i = 0; i <= arrayOfString.length - 1; i++) {
             if (!arrayOfString[i].toLowerCase().contains("a") && !arrayOfString[i].toLowerCase().contains("e") && !arrayOfString[i].toLowerCase().contains("i") && !arrayOfString[i].toLowerCase().contains("o") && !arrayOfString[i].toLowerCase().contains("u"))
             {
                 arrayOfStringWithoutVowels[i] = arrayOfString[i];
-
+                lenghtOfFinalArray++;
             }
         }
-        for (int j=0; j <= arrayOfStringWithoutVowels.length - 1; j++ )
+        String[] finalArray_withoutNullValues = new String[lenghtOfFinalArray];
+        for (int j=0, i = 0; j <= arrayOfStringWithoutVowels.length - 1; j++ )
         {
             if (arrayOfStringWithoutVowels[j] != null)
-                System.out.println("Array of strings without vowels are: " + arrayOfStringWithoutVowels[j]);
+            {
+                finalArray_withoutNullValues[i] = arrayOfStringWithoutVowels[j];
+                i++;
+            }
         }
 
-
-
-
+        // print
+        for (int j=0; j <= finalArray_withoutNullValues.length - 1; j++ )
+        {
+            System.out.println(finalArray_withoutNullValues[j]);
+        }
 
         // Task 9
         // Napravite program koji ce izracunati total kada se svaki element iz jednog niza
