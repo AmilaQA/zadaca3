@@ -133,23 +133,23 @@ public class Main {
         int thirdArray[] = {7, 8, 9};
 
         int lengthOfTotalArray = firstArray.length + secondArray.length + thirdArray.length;
-        int totalArray[] = new int[lengthOfTotalArray]; // D = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        int totalArray[] = new int[lengthOfTotalArray];
         // enter and populate elements
         for (int i = 0; i < firstArray.length; i++) {
             totalArray[i] = firstArray[i];
-        } // D = { 1, 2, 0, 0, 0, 0, 0, 0, 0 }
+        }
 
         for (int i = 0; i < secondArray.length; i++) {
             totalArray[i + firstArray.length] = secondArray[i];
-        } // D = { 1, 2, 3, 4, 5, 6, 0, 0, 0 }
+        }
 
         for (int i = 0; i < thirdArray.length; i++) {
             totalArray[i + firstArray.length + secondArray.length] = thirdArray[i];
-        } // D = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+        }
 
         for (int i = 0; i < totalArray.length; i++) {
             System.out.println(totalArray[i]);
-            // D = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+
         }
 
         // Task 7. NApravite program koji ce sabrati dva niza zajedno, ukoliko je jedan niz veci od drugo
